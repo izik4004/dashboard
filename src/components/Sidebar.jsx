@@ -1,14 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { Link }
+import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
-
-import {MdSpaceDashboard} from "react-icons/md";
-import {RiDashboard2Fill} from "react-icons/ri";
-import {FaAddressCard} from "react-icons/fa";
-import {GiTwirlCenter} from "react-icons/gi";
-import {BsFillChatTextFill} from "react-icons/bs";
-import {IoSettings} from "react-icons/io5";
 import {FiLogOut} from "react-icons/fi";
 // import {GiHamburgerMenu} from "react-icons/gi";
 // import {VscChromeClose} from "react-icons/vsc"
@@ -16,7 +9,9 @@ import {FiLogOut} from "react-icons/fi";
 
 
 export default function Sidebar() {
-    const [currentLink, setCurrentLink] = useState(1)
+    const [sidebar, setSidebar] = useState(false)
+
+    const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>
@@ -27,7 +22,7 @@ export default function Sidebar() {
                     <span></span>
                 </div>
                 <div className="toggle"></div>
-                <div className="links">
+                <div className= {showSidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul>
                         {SidebarData.map((item, index) => {
                             return (
@@ -39,47 +34,11 @@ export default function Sidebar() {
                                 </li>
                             )
                         })}
-                        <li onClick={()=>setCurrentLink(1)} className={currentLink === 1 ? "active" : ""}>
-                            {/* <a href="#"> */}
-                                <MdSpaceDashboard />
-                                <span>Dashboard</span>
-                            {/* </a> */}
-                        </li>
-                        <li>
-                            {/* <a href="#"> */}
-                                <RiDashboard2Fill />
-                                <span>Riders</span>
-                            {/* </a> */}
-                        </li>
-                        <li>
-                            {/* <a href="#"> */}
-                                <FaAddressCard />
-                                <span>Payment Details</span>
-                            {/* </a> */}
-                        </li>
-                        <li>
-                            {/* <a href="#"> */}
-                                <GiTwirlCenter />
-                                <span>Learning Center</span>
-                            {/* </a> */}
-                        </li>
-                        <li>
-                            {/* <a href="#"> */}
-                                <BsFillChatTextFill />
-                                <span>FAQs</span>
-                            {/* </a> */}
-                        </li>
-                        <li>
-                            {/* <a href="#"> */}
-                                <IoSettings />
-                                <span>Settings</span>
-                            {/* </a> */}
-                        </li>
                     </ul>
                 </div>
             </div>
             <div className="logout">
-                {/* <a href="#"> */}
+               
                     <FiLogOut />
                     <span>Logout</span>
                 {/* </a>        */}
@@ -122,7 +81,7 @@ gap: 2rem;
         color: #ffc107; 
     }
     }
-    .links {
+    .nav-menu {
         display:flex;
         justify-content: center;
         ul {
