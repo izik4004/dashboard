@@ -38,10 +38,10 @@ export default function Sidebar() {
                 </div>
             </div>
             <div className="logout">
-               
+            <Link to="/logout">
                     <FiLogOut />
                     <span>Logout</span>
-                {/* </a>        */}
+           </Link>
             </div>
         </Section>
     </>
@@ -51,15 +51,17 @@ export default function Sidebar() {
 const Section = styled.section`
 position:fixed;
 left: 0;
-background-color:#E5E5E5;
+background-color:white;
 height: 100vh;
 width:18vw;
+border-right:1px solid #E5E5E5;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-around;
 padding: 2rem 0;
 gap: 2rem;
+color:black;
 .top {
     display: flex;
     flex-direction: column;
@@ -73,7 +75,8 @@ gap: 2rem;
         display: flex;
         justify-content:center;
         align-items: center;
-        gap: 2rem;
+        ${'' /* gap: 2rem; */}
+        
     
     span {
         font-size: 2rem;
@@ -81,6 +84,7 @@ gap: 2rem;
         color: #ffc107; 
     }
     }
+
     .nav-menu {
         display:flex;
         justify-content: center;
@@ -103,16 +107,31 @@ gap: 2rem;
                     text-decoration: none;
                     display:flex;
                     gap:1rem;
-                    color: white;
+                    color: #000000;
                 }
             }
-            .active {
+            .nav-menu.active {
                 background-color: #E7332B
                 color:white;
-                ${'' /* a {
+                transition: 350ms;
+                a {
                     
-                } */}
+                }
             }
+        }
+    }
+    .logout {
+        padding: 0.3rem 1rem;
+        border-radius: 0.6rem;
+        &:hover {
+            background-color: #da0037;
+        }
+        a {
+            text-decoration:none;
+            display:flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: white;
         }
     }
 }
